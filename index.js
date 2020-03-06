@@ -25,4 +25,27 @@ function runGame() {
     askUserInput();
 };
 
+function askUserInput () {
+    if (counter < 12) {
+        console.log(gameWord.displayWord());
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "Pick a single letter and press enter.",
+                name: "letter"
+            }
+        ]).then(function(data) {
+            checkAnswer(data);
+        });
+    } else {
+        console.log("Sorry, you are out of guesses.");
+        console.log(chosenWord);
+        chosenWord = "";
+        gameWord = "";
+        selectWord = 0;
+        counter = 0;
+        runGame();
+    }
+};
+
 
