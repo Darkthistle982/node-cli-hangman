@@ -18,3 +18,4 @@ Letter.prototype = {
     }
 }
 
+module.exports = Letter;
