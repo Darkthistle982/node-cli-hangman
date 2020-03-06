@@ -1,3 +1,4 @@
+//require to make sure you can access the letter.js file
 let Letter = require('./letter.js');
 
 function Word(wordArray) {
