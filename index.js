@@ -48,4 +48,25 @@ function askUserInput () {
     }
 };
 
+function checkAnswer (data) {
+    if ((data.letter.length === 1) && /^[a-zA-Z]+$/.test(data.letter)) {
+        let makeUpper = data.letter.toUpperCase();
+        let checkForCompare = gameWord.displayWord();
+        gameWord.checkGuess(makeUpper);
+        if (checkForCompare === gameWord.displayWord()) {
+            console.log("Sorry, wrong letter!");
+            counter++; 
+            console.log((12 - counter) + " guesses remaining.");
+            askUserInput();
+        } else {
+            correctGuess();
+        }
+    } else {
+        console.log("Please enter a letter, one at a time.");
+        askUserInput();
+    }
+};
 
+
+
+runGame();
