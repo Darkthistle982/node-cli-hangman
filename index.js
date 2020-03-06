@@ -12,7 +12,7 @@ let counter = 0;
 function runGame() {
     if (wordListing.length < 2) {
         wordListing = ["STRENGTH", "DEXTERITY", "CONSTITUTION", "INTELLIGENCE", "WISDOM", "CHARISMA", "BARBARIAN", "BARD", "CLERIC", "DRUID",
-         "FIGHTER", "MONK", "PALADIN", "RANGER", "ROGUE", "SORCERER", "WARLOCK", "WIZARD"];
+            "FIGHTER", "MONK", "PALADIN", "RANGER", "ROGUE", "SORCERER", "WARLOCK", "WIZARD"];
     }
     selectWord = Math.floor(Math.random() * wordListing.length);
     chosenWord = wordListing[selectWord];
@@ -21,11 +21,11 @@ function runGame() {
     if (selectWord > -1) {
         wordListing.splice(selectWord, 1);
     }
-    console.log("You have 12 guesses to find the D&D themed word!");
+    console.log("You have 8 guesses to find the D&D themed word!");
     askUserInput();
 };
 
-function askUserInput () {
+function askUserInput() {
     if (counter < 12) {
         console.log(gameWord.displayWord());
         inquirer.prompt([
@@ -34,7 +34,7 @@ function askUserInput () {
                 message: "Pick a single letter and press enter.",
                 name: "letter"
             }
-        ]).then(function(data) {
+        ]).then(function (data) {
             checkAnswer(data);
         });
     } else {
@@ -48,15 +48,15 @@ function askUserInput () {
     }
 };
 
-function checkAnswer (data) {
+function checkAnswer(data) {
     if ((data.letter.length === 1) && /^[a-zA-Z]+$/.test(data.letter)) {
         let makeUpper = data.letter.toUpperCase();
         let checkForCompare = gameWord.displayWord();
         gameWord.checkGuess(makeUpper);
         if (checkForCompare === gameWord.displayWord()) {
             console.log("Sorry, wrong letter!");
-            counter++; 
-            console.log((12 - counter) + " guesses remaining.");
+            counter++;
+            console.log((8 - counter) + " guesses remaining.");
             askUserInput();
         } else {
             correctGuess();
@@ -67,6 +67,20 @@ function checkAnswer (data) {
     }
 };
 
+function correctGuess() {
+    console.log("You guessed correctly! Good Job!");
+    if (chosenWord.replace(/ /g, "") == (gameWord.displayWord()).replace(/ /g, "")) {
+        console.log(gameWord.displayWord());
+        console.log("You Won!");
+        chosenWord = "";
+        gameWord = "";
+        selectWord = 0;
+        counter = 0;
+        runGame();
+    } else {
+        askUserInput();
+    }
+}
 
 
 runGame();
