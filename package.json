@@ -1,0 +1,22 @@
+{
+  "name": "cli-hangman",
+  "version": "1.0.0",
+  "description": "A simple, node.js app that allows the user to play hangman from the terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darkthistle982/node-cli-hangman.git"
+  },
+  "author": "Brian Allen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darkthistle982/node-cli-hangman/issues"
+  },
+  "homepage": "https://github.com/Darkthistle982/node-cli-hangman#readme",
+  "dependencies": {
+    "inquirer": "^7.0.6"
+  }
+}
