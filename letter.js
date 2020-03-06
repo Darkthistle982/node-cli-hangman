@@ -22,5 +22,5 @@ Letter.prototype = {
         }
     }
 }
-
+//export to make sure you can access this file from others
 module.exports = Letter;
