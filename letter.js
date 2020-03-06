@@ -5,7 +5,10 @@ function Letter(letterGuessed) {
 
 Letter.prototype = {
     guessDisplay: function () {
-        if (!this.letterGuessed) {
+        if (this.letterGuessed === " ") {
+            return " "
+        }
+        else if (!this.isGuessed) {
             return "_";
         } else {
             return this.letterGuessed;
