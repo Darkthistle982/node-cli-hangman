@@ -1,11 +1,11 @@
 //require to make sure you can access the letter.js file
 let Letter = require('./letter.js');
-
+// constructor for the Word objects for the game
 function Word(wordArray) {
     this.wordArray = wordArray;
     this.letterArray = [];
 }
-
+//constructor prototype for the various WORD related functions. 
 Word.prototype = {
     createWord: function () {
         for (let i = 0; i < this.wordArray.length; i++) {
@@ -26,5 +26,5 @@ Word.prototype = {
         }
     }
 }
-
+//export to make sure the other docs can access this data
 module.exports = Word;
