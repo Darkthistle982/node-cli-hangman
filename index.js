@@ -82,6 +82,6 @@ function correctGuess() {
     } else {
         askUserInput();
     }
-}
+};
 //initial call to make sure as soon as the node index.js command is given in the console, the game is started.
 runGame();
