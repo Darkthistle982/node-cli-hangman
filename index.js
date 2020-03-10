@@ -1,14 +1,15 @@
-let Word = require('./word.js');
-let inquirer = require('inquirer');
-
+//require statements to make sure we can access the word.js file and the inquirer npm
+const Word = require('./word.js');
+const inquirer = require('inquirer');
+//array containing all the possible words for the game
 const wordListing = ["STRENGTH", "DEXTERITY", "CONSTITUTION", "INTELLIGENCE", "WISDOM", "CHARISMA", "BARBARIAN", "BARD", "CLERIC", "DRUID",
     "FIGHTER", "MONK", "PALADIN", "RANGER", "ROGUE", "SORCERER", "WARLOCK", "WIZARD"];
-
+//variable to hold the starting state data for the game
 let selectWord = 0;
 let chosenWord = "";
 let gameWord = "";
 let counter = 0;
-
+// function to run the game which will also refill the wordListing array if it is down to the last word
 function runGame() {
     if (wordListing.length < 2) {
         wordListing = ["STRENGTH", "DEXTERITY", "CONSTITUTION", "INTELLIGENCE", "WISDOM", "CHARISMA", "BARBARIAN", "BARD", "CLERIC", "DRUID",
@@ -24,7 +25,7 @@ function runGame() {
     console.log("You have 8 guesses to find the D&D themed word!");
     askUserInput();
 };
-
+// function to prompt the user with inquirer and gather their data
 function askUserInput() {
     if (counter < 12) {
         console.log(gameWord.displayWord());
@@ -47,7 +48,8 @@ function askUserInput() {
         runGame();
     }
 };
-
+//function to convert the chosen character, and check if it is a letter for validity using a regular expression. 
+// it also makes it uppercase to make the match logic easier to manage.
 function checkAnswer(data) {
     if ((data.letter.length === 1) && /^[a-zA-Z]+$/.test(data.letter)) {
         let makeUpper = data.letter.toUpperCase();
@@ -66,7 +68,7 @@ function checkAnswer(data) {
         askUserInput();
     }
 };
-
+//function to manage the correct guess, and if the whole word is solved, reset the starting state, and run the game
 function correctGuess() {
     console.log("You guessed correctly! Good Job!");
     if (chosenWord.replace(/ /g, "") == (gameWord.displayWord()).replace(/ /g, "")) {
@@ -81,5 +83,5 @@ function correctGuess() {
         askUserInput();
     }
 }
-
+//initial call to make sure as soon as the node index.js command is given in the console, the game is started.
 runGame();
