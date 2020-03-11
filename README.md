@@ -37,6 +37,10 @@ The application uses 3 javascript files. The letter.js file is the constructor t
 
 The game has a pre-built array of words, which it randomly chooses one from upon starting. It then prompts the user and displays the word as Underscores. It also logs the users guesses and shows how many guesses are remaining. It tracks the results and resets upon a win or a loss. 
 
+Currently, there is an error that occurs on the 9th instance. This is a known error caused by inquirer that there isn't currenlty a solution that I could find. I was not able to successfully implement the setMaxListener command. This would need to be solved for long term use. If you continue entering items as usual, the program resumes operation. 
+
+Reference to issue here: https://stackoverflow.com/questions/51713333/how-to-terminate-npm-inquirer-prompt-and-return-control-to-main-menu-function
+
 ## Screenshots
 
 ### Application Start up screenshot
